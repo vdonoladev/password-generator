@@ -1,50 +1,50 @@
 from random import choice
 
-class gerador():
+class generator():
        
-    def gerador_senha(tamanho):
-        caracteres = "0123456789abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%&*()_+}{`^?;:>/-+.,"
-        senha = ""
-        for i in range(tamanho):
-            senha += choice(caracteres)
-        return senha
+    def password_generator(size):
+        characters = "0123456789abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#$%&*()_+}{`^?;:>/-+.,"
+        password = ""
+        for i in range(size):
+            password += choice(characters)
+        return password
 
 
-    def pergunta_arquivo(resposta):
+    def file_question(answer):
         
-        while resposta != "yes" and resposta != "not" and resposta != "no":
-            resposta = input("Do you want to save to a file? yes/not: ")
-        if resposta == "yes":
-            nome_do_arquivo = input("File name: ")
-            arquivo = open("{}.txt".format(nome_do_arquivo), "a")  # Creates a file in writing format (.txt)
-            arquivo.write("USER NAME: {}\n".format(nome))  # Write to the file
-            arquivo.write("PASSWORD: {}\n".format(senha))  # Write to the file
-            arquivo.write("LINK: {}".format(link))  # Write to the file
-            arquivo.close()  # Closes the file
-            sair = input("Do you want to leave? yes/not: ")
-            while sair == "not" or sair == "no":
-                sair = input("Do you want to leave? yes/not: ")
-        elif resposta == "not" or resposta == "no":
+        while answer != "yes" and answer != "not" and answer != "no":
+            answer = input("Do you want to save to a file? yes/not: ")
+        if answer == "yes":
+            file_name = input("File name: ")
+            file = open("{}.txt".format(file_name), "a")  # Creates a file in writing format (.txt)
+            file.write("USER NAME: {}\n".format(name))  # Write to the file
+            file.write("PASSWORD: {}\n".format(password))  # Write to the file
+            file.write("LINK: {}".format(link))  # Write to the file
+            file.close()  # Closes the file
+            exit = input("Do you want to leave? yes/not: ")
+            while exit == "not" or exit == "no":
+                exit = input("Do you want to leave? yes/not: ")
+        elif answer == "not" or answer == "no":
             print()
             print()
             print("+--------------------------")
-            print("|User name: {}".format(nome))
-            print("|Password: {}".format(senha))
+            print("|User name: {}".format(name))
+            print("|Password: {}".format(password))
             print("|Link: {}".format(link))
             print("+--------------------------")
             print()
-            sair = input("Do you want to leave? yes/not: ")
-            while sair == "not" or sair == "no":
-                sair = input("Do you want to leave? yes/not: ")
+            exit = input("Do you want to leave? yes/not: ")
+            while exit == "not" or exit == "no":
+                exit = input("Do you want to leave? yes/not: ")
 
 
-    def pergunta_link(resposta):
+    def question_link(answer):
         link = ""
-        while resposta != "yes" and resposta != "not" and resposta != "no":
-            resposta = input("Want to enter the website link? yes/not: ")
-        if resposta == "yes":
+        while answer != "yes" and answer != "not" and answer != "no":
+            answer = input("Want to enter the website link? yes/not: ")
+        if answer == "yes":
             link = input("Enter the website link: ") 
-        return resposta, link  # returns the value of two variables
+        return answer, link  # returns the value of two variables
                 
 
 
@@ -57,13 +57,13 @@ print("-------------------------")
 print("Info: This program will generate a password to be used in registrations and accounts!")
 print()
 
-nome = input("Enter username: ")
-quantidade = int(input("Enter the number of characters you want in the password: "))
-pergunta_link = input("Want to enter the website link? yes/not: ")
-pergunta_link, link = gerador.pergunta_link(pergunta_link)  # uses two variables to save the two values returned by the function's return
+name = input("Enter username: ")
+quantity = int(input("Enter the number of characters you want in the password: "))
+question_link = input("Want to enter the website link? yes/not: ")
+question_link, link = generator.question_link(question_link)  # uses two variables to save the two values returned by the function's return
 
-senha = gerador.gerador_senha(quantidade)
-print("YOUR PASSWORD IS: {}".format(senha))
+password = generator.password_generator(quantity)
+print("YOUR PASSWORD IS: {}".format(password))
 print()
-pergunta = input("Do you want to save to a file? yes/not: ")
-pergunta = gerador.pergunta_arquivo(pergunta)
+question = input("Do you want to save to a file? yes/not: ")
+question = generator.file_question(question)
